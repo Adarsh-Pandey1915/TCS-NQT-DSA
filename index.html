@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>16-Week TCS NQT + Data Analyst Roadmap</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-light: #eff6ff;
+            --secondary: #475569;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --border: #e2e8f0;
+            --tag-dsa: #fee2e2;
+            --tag-dsa-text: #991b1b;
+            --tag-sql: #dcfce7;
+            --tag-sql-text: #166534;
+            --tag-ai: #f3e8ff;
+            --tag-ai-text: #6b21a8;
+            --tag-bi: #e0f2fe;
+            --tag-bi-text: #075985;
+            --tag-biz: #ffedd5;
+            --tag-biz-text: #9a3412;
+            --tag-nqt: #fef08a;
+            --tag-nqt-text: #854d0e;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: #0f172a;
+            line-height: 1.6;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 950px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        p.subtitle {
+            color: var(--secondary);
+            font-size: 1.1rem;
+        }
+
+        .daily-split {
+            background-color: #1e293b;
+            color: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 2.5rem;
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .split-item h4 {
+            color: #93c5fd;
+            font-size: 1.2rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .split-item p {
+            font-size: 0.9rem;
+            color: #cbd5e1;
+        }
+
+        .tree-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        details {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        details[open] {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            border-color: var(--primary);
+        }
+
+        summary {
+            font-size: 1.25rem;
+            font-weight: 600;
+            padding: 1.5rem;
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: var(--card-bg);
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::after {
+            content: "+";
+            font-size: 1.5rem;
+            color: var(--primary);
+            transition: transform 0.3s ease;
+        }
+
+        details[open] summary::after {
+            content: "−";
+            transform: rotate(180deg);
+        }
+
+        .details-content {
+            padding: 0 1.5rem 1.5rem 1.5rem;
+            border-top: 1px solid var(--border);
+            background-color: var(--card-bg);
+        }
+
+        .module {
+            margin-top: 1.5rem;
+            padding-left: 1.5rem;
+            border-left: 3px solid var(--primary-light);
+        }
+
+        .module h3 {
+            font-size: 1.1rem;
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .tags {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 0.2rem 0.6rem;
+            border-radius: 9999px;
+            text-transform: uppercase;
+        }
+
+        .tag.dsa { background-color: var(--tag-dsa); color: var(--tag-dsa-text); }
+        .tag.sql { background-color: var(--tag-sql); color: var(--tag-sql-text); }
+        .tag.ai { background-color: var(--tag-ai); color: var(--tag-ai-text); }
+        .tag.bi { background-color: var(--tag-bi); color: var(--tag-bi-text); }
+        .tag.biz { background-color: var(--tag-biz); color: var(--tag-biz-text); }
+        .tag.nqt { background-color: var(--tag-nqt); color: var(--tag-nqt-text); }
+
+        .emphasis-box {
+            background-color: var(--primary-light);
+            border-left: 4px solid var(--primary);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0 8px 8px 0;
+            font-size: 0.95rem;
+        }
+
+        .nqt-box {
+            background-color: #fefce8;
+            border-left: 4px solid #ca8a04;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0 8px 8px 0;
+            font-size: 0.95rem;
+        }
+
+        .ai-box {
+            background-color: var(--tag-ai);
+            border-left: 4px solid var(--tag-ai-text);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0 8px 8px 0;
+            font-size: 0.95rem;
+        }
+
+        ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--secondary);
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        a.resource-link {
+            display: inline-block;
+            background-color: #1e293b;
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-top: 0.5rem;
+            margin-right: 0.5rem;
+            transition: background-color 0.2s;
+        }
+
+        a.resource-link:hover {
+            background-color: var(--primary);
+        }
+
+        @media (max-width: 600px) {
+            body { padding: 1rem; }
+            .daily-split { flex-direction: column; text-align: left; }
+            summary { font-size: 1.1rem; padding: 1rem; }
+            .details-content { padding: 0 1rem 1rem 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>TCS NQT & Data Analyst Roadmap</h1>
+            <p class="subtitle">16-Week Plan to Clear the TCS Integrated Assessment (Ninja/Digital/Prime) & Build Industry Data Skills</p>
+        </header>
+
+        <div class="daily-split">
+            <div class="split-item">
+                <h4>⏱️ Hour 1: TCS Aptitude</h4>
+                <p>Numerical, Verbal & Reasoning Math</p>
+            </div>
+            <div class="split-item">
+                <h4>⏱️ Hour 2: Data Skills</h4>
+                <p>SQL, Excel & Power BI</p>
+            </div>
+            <div class="split-item">
+                <h4>⏱️ Hour 3: DSA / Coding</h4>
+                <p>Arrays, Strings & Advanced Logic</p>
+            </div>
+        </div>
+
+        <div class="tree-container">
+
+            <!-- PHASE 1 -->
+            <details open>
+                <summary>Phase 1: TCS Foundation & Core Data Basics (Weeks 1 - 4)</summary>
+                <div class="details-content">
+                    
+                    <div class="module">
+                        <h3>Week 1-2: TCS Aptitude (Part A) & Python Basics</h3>
+                        <div class="tags">
+                            <span class="tag nqt">TCS NQT</span> <span class="tag dsa">DSA</span>
+                        </div>
+                        <div class="nqt-box">
+                            <strong>TCS Foundation Section Target (75 Mins):</strong> Focus strictly on Percentages, Profit & Loss, Ages, Time & Work (Numerical); Syllogisms & Seating Arrangements (Reasoning); Sentence Completion & Error Spotting (Verbal).
+                        </div>
+                        <ul>
+                            <li>Practice 20 NQT Aptitude questions daily.</li>
+                            <li>Learn Python basics for Data: loops, lists, dictionaries.</li>
+                            <li>Solve 15 Easy Array/String problems for the NQT Coding Section.</li>
+                        </ul>
+                        <div class="ai-box">
+                            <strong>🤖 Where AI Can Help:</strong> Paste confusing Syllogisms or "Pipes & Cisterns" math questions into ChatGPT and prompt: "Explain the underlying mathematical formula for this problem step-by-step for a beginner, without just giving the final answer."
+                        </div>
+                        <a href="https://prepinsta.com/tcs-nqt/syllabus/" target="_blank" class="resource-link">TCS NQT Syllabus & Patterns</a>
+                    </div>
+
+                    <div class="module">
+                        <h3>Week 3-4: Relational Databases & Core SQL</h3>
+                        <div class="tags">
+                            <span class="tag sql">SQL</span> <span class="tag nqt">TCS NQT</span>
+                        </div>
+                        <div class="emphasis-box">
+                            <strong>Where to Emphasize:</strong> For technical interviews, mastering multi-table JOINs, GROUP BY, and handling NULL values is the absolute core of the data analyst role.
+                        </div>
+                        <ul>
+                            <li>SQL: Understand Primary/Foreign Keys, INNER/LEFT JOINs, and WHERE vs. HAVING.</li>
+                            <li>NQT Advanced Math (Part B): Shift aptitude practice to Probability, Permutations & Combinations, and Data Interpretation.</li>
+                        </ul>
+                        <a href="https://mode.com/sql-tutorial/" target="_blank" class="resource-link">Interactive SQL Tutorial</a>
+                        <a href="https://www.geeksforgeeks.org/competitive-exam-experiences/tcs-nqt-exam-preparation-and-guide/" target="_blank" class="resource-link">GFG NQT Prep</a>
+                    </div>
+
+                </div>
+            </details>
+
+            <!-- PHASE 2 -->
+            <details>
+                <summary>Phase 2: Advanced NQT Coding & Data Wrangling (Weeks 5 - 8)</summary>
+                <div class="details-content">
+                    
+                    <div class="module">
+                        <h3>Week 5-6: Advanced SQL & TCS NQT Coding (Part B)</h3>
+                        <div class="tags">
+                            <span class="tag sql">SQL</span> <span class="tag dsa">DSA</span>
+                        </div>
+                        <div class="nqt-box">
+                            <strong>TCS Advanced Coding Target (90 Mins):</strong> You must solve 2 coding problems to unlock the Digital (7 LPA) and Prime (9-11 LPA) packages. Focus on Sorting, Searching algorithms, and String manipulation.
+                        </div>
+                        <ul>
+                            <li>SQL: Master Window Functions (ROW_NUMBER, RANK, LEAD, LAG) and CTEs.</li>
+                            <li>DSA: Practice standard array manipulation and basic recursion problems.</li>
+                        </ul>
+                        <a href="https://leetcode.com/studyplan/top-sql-50/" target="_blank" class="resource-link">Top 50 SQL Study Plan</a>
+                    </div>
+
+                    <div class="module">
+                        <h3>Week 7-8: Modern Excel & NQT Full-Length Mocks</h3>
+                        <div class="tags">
+                            <span class="tag bi">Excel</span> <span class="tag nqt">TCS NQT</span>
+                        </div>
+                        <div class="emphasis-box">
+                            <strong>Where to Emphasize:</strong> Stop at basic Excel formulas (XLOOKUP, SUMIFS). Focus heavily on Power Query to automate data cleaning.
+                        </div>
+                        <ul>
+                            <li>Learn to use Power Query to append, merge, and unpivot messy CSV datasets.</li>
+                            <li><strong>Crucial:</strong> Take 2 full-length 190-minute TCS NQT Mock tests. Remember, there is NO negative marking, but you cannot switch between sections freely!</li>
+                        </ul>
+                        <a href="https://www.youtube.com/@chandoo_" target="_blank" class="resource-link">Chandoo Excel Automation</a>
+                    </div>
+
+                </div>
+            </details>
+
+            <!-- PHASE 3 -->
+            <details>
+                <summary>Phase 3: Business Intelligence & AI Strategy (Weeks 9 - 12)</summary>
+                <div class="details-content">
+                    
+                    <div class="module">
+                        <h3>Week 9-10: Power BI, Data Modeling & DAX</h3>
+                        <div class="tags">
+                            <span class="tag bi">Power BI</span>
+                        </div>
+                        <div class="emphasis-box">
+                            <strong>Where to Emphasize:</strong> Do not just drag and drop charts. Master the <strong>Star Schema</strong>. If your data model is bad, your dashboard will fail.
+                        </div>
+                        <ul>
+                            <li>Understand Filter Context vs. Row Context in DAX.</li>
+                            <li>Learn core DAX measures: CALCULATE, SUMX, FILTER, TOTALYTD.</li>
+                        </ul>
+                        <div class="ai-box">
+                            <strong>🤖 Where AI Can Help:</strong> DAX is confusing. Prompt AI: "I have a Fact table of Sales and a Dimension table of Dates. Write a DAX measure using CALCULATE to find a 30-day rolling average, and explain the filter context."
+                        </div>
+                        <a href="https://learn.microsoft.com/en-us/training/paths/data-analytics-microsoft/" target="_blank" class="resource-link">Free MS Learn PL-300 Path</a>
+                    </div>
+
+                    <div class="module">
+                        <h3>Week 11-12: Business Strategy & Critical Thinking</h3>
+                        <div class="tags">
+                            <span class="tag biz">Strategy</span>
+                        </div>
+                        <ul>
+                            <li>Learn business metrics: Customer Acquisition Cost (CAC), Lifetime Value (LTV), and Churn Rate.</li>
+                            <li>Hypothesis Testing: Learn how to frame an analytical question (e.g., "Did the new UI drop cart checkout rates?").</li>
+                        </ul>
+                        <a href="https://www.youtube.com/@statquest" target="_blank" class="resource-link">StatQuest (Hypothesis Testing)</a>
+                    </div>
+
+                </div>
+            </details>
+
+            <!-- PHASE 4 -->
+            <details>
+                <summary>Phase 4: TCS Interview Prep & Portfolio (Weeks 13 - 16)</summary>
+                <div class="details-content">
+                    
+                    <div class="module">
+                        <h3>Week 13-14: TCS Technical/HR Rounds & Storytelling</h3>
+                        <div class="tags">
+                            <span class="tag nqt">Interviews</span> <span class="tag biz">Storytelling</span>
+                        </div>
+                        <div class="nqt-box">
+                            <strong>TCS Interview Reality:</strong> For Digital/Prime roles, the technical interview involves deep questions on your final year project, DBMS (SQL), and sometimes live coding. HR will test communication and relocation flexibility.
+                        </div>
+                        <ul>
+                            <li>Practice explaining your technical projects without using jargon (Executive Storytelling).</li>
+                            <li>Prepare clear answers for standard Managerial and HR round questions.</li>
+                        </ul>
+                        <div class="ai-box">
+                            <strong>🤖 Where AI Can Help:</strong> Give an AI your resume and prompt: "Act as a TCS Technical Interviewer for a Digital role. Ask me 3 challenging questions based on my SQL and Power BI projects, and grade my responses."
+                        </div>
+                    </div>
+
+                    <div class="module">
+                        <h3>Week 15-16: Portfolio Building & Final Review</h3>
+                        <div class="tags">
+                            <span class="tag bi">Portfolio</span> <span class="tag sql">Projects</span>
+                        </div>
+                        <div class="emphasis-box">
+                            <strong>Where to Emphasize:</strong> Build two end-to-end projects. Do NOT use generic datasets like Titanic or Iris. Host your code on GitHub.
+                        </div>
+                        <ul>
+                            <li>Build Project 1: Revenue / E-Commerce Operations Dashboard.</li>
+                            <li>Build Project 2: Customer Retention / Churn SQL Analysis.</li>
+                            <li>Format a 1-page ATS-friendly resume highlighting "TCS NQT Score" (once received) and portfolio links.</li>
+                        </ul>
+                        <a href="https://www.youtube.com/playlist?list=PLUaB-1hjhk8GZOuylZqLzYphlcm45cqCW" target="_blank" class="resource-link">Alex The Analyst (Portfolio Projects)</a>
+                    </div>
+
+                </div>
+            </details>
+
+        </div>
+    </div>
+
+</body>
+</html>
